@@ -1,0 +1,136 @@
+body{
+	font-family: 'Baloo Bhaijaan', cursive;
+/*	font-family: 'Roboto Mono', monospace;*/
+/*	font-family: 'Shrikhand', cursive;*/
+/*	background-color: #9cbbed;*/
+	background-image: url('http://iamdesigning.com/blog/wp-content/uploads/2012/12/Line-Paper-Texture.jpg');
+/*	opacity: 0.5;*/
+}
+
+header{
+	position:absolute;
+	margin-top:3px;
+	color: #821d03;
+	font-weight: 800;
+/*	background-color: #02c2ed;*/
+}
+.local_ess, .sub_head, .question{
+	margin:0 0 0 30px;
+}
+
+.question{
+	display:inline-block;
+}
+
+.js_submit_type{
+	float:left;
+	position: relative;
+	top:13%;
+}
+
+.js_display_div{
+	width:50%;
+	margin-left:30px;
+	position:relative;
+	top:10%;
+}
+
+.init_app{
+	background-color: #e5a9bd;
+	font-size: 15px;
+	border-radius: 10px;
+	height:40px;
+	position:relative;
+	display:inline-block;
+	font-weight: bold;
+	top:15%;
+	left:10%;
+}
+
+.init_app:hover{
+	background-color: #ff60f4;
+	font-weight:bolder;
+
+}
+
+.js_submit_form{
+	position:relative;
+	top:50px;
+	margin:0 0 0 30px;
+}
+
+.address{
+	color:#821d03;
+}
+.type_query_input{
+	background-color: #e5a9bd;
+	font-size: 15px;
+	border-radius: 10px;
+	position:relative;
+	display:block;
+	top:350px;
+	left:75px;
+	height:40px;
+	font-weight:bold;
+}
+
+.type_query_input:hover{
+	background-color: #ff60f4;
+	font-weight:bolder;
+
+}
+
+.search_box{
+	background-color: #e5a9bd;
+	font-size: 15px;
+	border-radius: 10px;
+	font-weight:bold;
+}
+
+.search_box:hover{
+	background-color: #ff60f4;
+	font-weight:bolder;
+}
+
+.type_place{
+	font-size: 16px;
+	text-decoration: underline;
+}
+.js_your_results{
+	border-style: solid;
+	border-width: 2px;
+	border-color: #bff0ff;
+	padding-top:4px;
+	margin-top:2.5px;
+	margin-bottom:2.5px;
+	margin-left:2.5px;
+	margin-right:2.5px;
+	height:300px;
+	position: relative;
+}
+
+.js_your_results:hover{
+	background-color: #c9d8f2;
+
+}
+
+.js_name{
+	font-size: 17px;
+	text-align: center;
+}
+
+.js_vicinity{
+	font-size: 14px;
+	text-align:center;
+}
+
+/*.pic_div{
+    margin:0 auto;
+    top:0;
+    left:0;
+    right:0;
+    width: 100px;
+    height: 75px;
+    bottom:5px;
+    position:absolute;
+}*/

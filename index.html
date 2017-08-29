@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Place searches</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+        width: 57%;
+        float: right;
+        position: fixed !important;
+        right:0;
+/*        vertical-align: inherit;*/
+        top:0px;
+        background-color: #459aad;
+        box-shadow: 0 0 1px 5px #dce3e5;
+/*        display:inline-block;*/
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script>
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+/*      var map;
+      var service;
+      var request;
+
+      function initMap() {
+        var tavistock = {lat: 50.578993, lng: -4.223299}};
+
+          map = new google.maps.Map(document.getElementById('map'), {
+          center: tavistock,
+          zoom: 15
+        });
+
+        request = {
+          location: $('query'),
+          radius: 2000,
+          type: ['grocery_or_supermarket','cafe','restaurant'],
+          key?
+        };
+        
+        infowindow = new google.maps.InfoWindow();
+        service = new google.maps.places.PlacesService(map);
+        service.nearbySearch(request, callback);
+
+
+      function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            markers.push(createMarker(results[i]));
+          }
+        }
+      }*/
+      var map;
+      var infowindow;
+      var request;
+      var service;
+      var markers=[];
+
+/*      var results =[];*/
+
+      function initMap() {
+        //this function loads the map initially
+
+        var pyrmont =  {lat:51.5438046, lng:-0.1324575};
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: pyrmont,
+          zoom: 16
+        });
+
+      
+      request = {
+          location: pyrmont,
+          radius: 4000,
+          type: ["dentist"]
+      };
+        infowindow = new google.maps.InfoWindow();
+        service = new google.maps.places.PlacesService(map);
+        service.nearbySearch(request, callback);
+        $('.js_submit_form').hide();
+        $('.js_submit_type').hide();
+        $('.js_display_div').hide();
+        $('.question').hide();
+        startApp();
+
+    service.nearbySearch(request, callback);
+  }
+
+        function newMap(latlng){
+          //this function reloads he map with new latlng from geocoder
+          clearMarkers();
+          map.setCenter(latlng);
+          for(i=0;i<types.length;i++){
+          console.log('loop running')
+          var request ={
+          location:latlng,
+          radius: 500,
+          type: (types[i])
+        };
+          service.nearbySearch(request, callback);
+
+    };
+}
+
+      function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++);
+            createResults(results[0]); {
+            createMarker(results[0]);
+            console.log(results);
+            console.log
+          }
+        }
+
+      }
+
+
+      function createMarker(place) {
+        console.log(place);
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+        });
+        markers.push(marker);
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(place.name);
+          infowindow.open(map, this);
+        });
+      }
+
+      function clearMarkers(){
+      $('.js_display_div').html('');
+      console.log('clearing markers',markers);
+        for(var m = 0;m < markers.length; m++){
+          console.log(markers[m]);
+          markers[m].setMap(null);
+        }
+        markers=[]
+        }
+      
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!--     <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet"> -->
+<!--     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="grid.css">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+    <script src="index.js"></script>
+  </head>
+  <body class="global">
+  <header class="col-6">
+  <h1 class="local_ess">Holiday Essentials</h1>
+  <h2 class="sub_head">Your Essentials - Close by. . . .</h2>
+  <h2 class="question"> Select your essentials....</h2>
+  </header>
+   <button type="button" class="init_app ">Find Essentials!</button>
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ7m7GCdTNU6w7AT_IfdAtJh8xu41dCUw&libraries=places&callback=initMap" async defer></script>
+    <form action="#" class="js_submit_form col-3">
+    <h2 class="address">Where do you want to go?</h2>
+    <label for="query"></label>
+    <input type="text" class="address_query_input" placeholder="New York, London, Milan">
+    <button type="submit" class="search_box">Search</button>
+  
+    </form>
+    <form action="#" class="js_submit_type main_input col-6">
+<!--     <h2 class="essentials">What are your <span>essentials</span></h2> -->
+    <label for="query"></label>
+    <div class="js_types col-6"></div>
+    <input type="submit" class="type_query_input">
+    <label for="query"></label>
+    </form>
+    <div class="js_display_div col-6"></div>
+
+<!--     <button type="submit" value="Submit"></button> -->
+    
+    </form>
+  </body>
+</html>
