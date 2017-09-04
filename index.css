@@ -1,21 +1,29 @@
 body{
-	font-family: 'Baloo Bhaijaan', cursive;
+/*	font-family: 'Baloo Bhaijaan', cursive;*/
 /*	font-family: 'Roboto Mono', monospace;*/
 /*	font-family: 'Shrikhand', cursive;*/
 /*	background-color: #9cbbed;*/
-	background-image: url('http://iamdesigning.com/blog/wp-content/uploads/2012/12/Line-Paper-Texture.jpg');
+	font-family: 'Chelsea Market', cursive;
+	background-image: url("sea4.jpg");
+	color:#870c0c;
 /*	opacity: 0.5;*/
 }
 
 header{
 	position:absolute;
 	margin-top:3px;
-	color: #821d03;
+	color: #870c0c;
 	font-weight: 800;
+	text-align:center;
 /*	background-color: #02c2ed;*/
 }
 .local_ess, .sub_head, .question{
 	margin:0 0 0 30px;
+}
+
+.underline{
+	text-decoration: underline;
+	text-decoration-color: green;
 }
 
 .question{
@@ -23,44 +31,57 @@ header{
 }
 
 .js_submit_type{
-	float:left;
 	position: relative;
 	top:13%;
 }
 
 .js_display_div{
-	width:50%;
-	margin-left:30px;
+/*	width:50%;*/
+/*	margin-left:10%;*/
+	margin:0 auto;
 	position:relative;
-	top:10%;
+	top:20%;
+	display:block;
 }
 
 .init_app{
 	background-color: #e5a9bd;
 	font-size: 15px;
 	border-radius: 10px;
+	position:relative;
+	display:block;
 	height:40px;
 	position:relative;
-	display:inline-block;
 	font-weight: bold;
-	top:15%;
-	left:10%;
+	top:30%;
+	margin:0 auto;
+/*	left:10%;*/
 }
 
 .init_app:hover{
 	background-color: #ff60f4;
-	font-weight:bolder;
 
+}
+
+.js_types{
+	font-size: 17px;
+	color: #870c0c;
+	font-weight: 800;
 }
 
 .js_submit_form{
 	position:relative;
-	top:50px;
-	margin:0 0 0 30px;
+	text-align:center;
+	top:10%;
+	margin:0 0 0 0;
+	font-size: 23px;
+	color: #e5a9bd;
+	font-weight: 800;
 }
 
 .address{
-	color:#821d03;
+	color:#870c0c;
+	font-weight: 800;
 }
 .type_query_input{
 	background-color: #e5a9bd;
@@ -68,8 +89,7 @@ header{
 	border-radius: 10px;
 	position:relative;
 	display:block;
-	top:350px;
-	left:75px;
+	margin:0 auto;
 	height:40px;
 	font-weight:bold;
 }
@@ -89,7 +109,7 @@ header{
 
 .search_box:hover{
 	background-color: #ff60f4;
-	font-weight:bolder;
+/*	font-weight:bolder;*/
 }
 
 .type_place{
@@ -97,23 +117,32 @@ header{
 	text-decoration: underline;
 }
 .js_your_results{
-	border-style: solid;
+	background-color: rgba(138, 221, 247, 0.25);
+/*	border-style: solid;
 	border-width: 2px;
-	border-color: #bff0ff;
-	padding-top:4px;
-	margin-top:2.5px;
-	margin-bottom:2.5px;
-	margin-left:2.5px;
-	margin-right:2.5px;
-	height:300px;
+	border-color: #bff0ff;*/
+	width:13%;
+/*	padding-top:4px;*/
+	margin-top:1%;
+	margin-bottom:1%;
+	margin-left:1%;
+	margin-right:1%;
+	height:220px;
 	position: relative;
+	border-color:#ba44ac;
+	border-style: solid;
+	border-width: .5px;
 }
 
 .js_your_results:hover{
-	background-color: #c9d8f2;
+	background-color: rgba(240, 242, 135, 0.5);
+	font-weight: bolder;
 
 }
 
+.js_more_info{
+	color:#870c0c;
+}
 .js_name{
 	font-size: 17px;
 	text-align: center;
@@ -124,13 +153,23 @@ header{
 	text-align:center;
 }
 
-/*.pic_div{
-    margin:0 auto;
-    top:0;
-    left:0;
-    right:0;
-    width: 100px;
-    height: 75px;
-    bottom:5px;
+.google_img{
+     left: 0; 
+ 	 right: 0; 
+  	margin-left: auto; 
+  	margin-right: auto;
+    display:block;
     position:absolute;
-}*/
+    bottom:5%;
+    width:110px;
+    height:75px;
+/*    position:absolute;*/
+}
+
+.report_div{
+	display: block;
+	position: relative;
+	top:10%;
+	clear:right;
+/*	position:relative;*/
+}

@@ -1,26 +1,41 @@
 
 var place_types=["art_gallery","beauty_salon","bakery","bar","book_store","cafe","casino","dentist","department_store","doctor","florist","gym","lodging","laundry","police","liquor_store","meal_delivery","meal_takeaway","museum","night_club","park","post_office","restaurant","spa"];
 var types =new Array();
-var diff=types.filter(function(val) {
-  return returned_types.indexOf(val) != -1;
-});
+let main_array=[];
+let user_clicked= false;
 
-
-
+//startApp initialises the app using a listener on the "Lets go!" button on the landing page. Upon hearing the clcik it toggles 
+//on and off various divs, clears the HTML from some divs and also runs the "renderTyes" function
 function startApp(){
   $(".init_app").click(function(){
+    user_clicked=true;
     $('.js_submit_type').toggle();
     $('.sub_head').hide();
     renderTypes();
     console.log('listener ran')
+    $('.js_types input[type="checkbox"]:checked').each(function(){$(this).click()});
     $(".init_app").hide();
     $('.question').toggle();
-
-
-    // $('js_submit_form').toggle();
+    $('.gamble').hide();
+    $('.amenities').hide();
+    $('.report_div').hide();
+    $('.js_types').show();
+    $('.js_display_div').hide();
+    console.log('line 27');
+    $('.js_display_div').html('');
+    types =new Array();
   })}
 
+//render types populates all the predetermined place types with a checkbox
+  function renderTypes(){
+    for(var i=0;i<place_types.length;i++){
+     $(".js_types").append(`<input type="checkbox" name="checkbox_input${place_types[i]}" value="${place_types[i]}" class="js_submit_type">
+    <label for="google_place_types" class="js_type">${place_types[i].replace('_',' ')}</label><br>`)
+    console.log('render types ran');
+   }
+ }
 
+//listenTypeSubmit listens for a click on the "submit button", hides and shows various div's.. moves on to the destination enter page.
 function listenTypeSubmit(){
   console.log('listenTypeSubmit ran');
   $(".js_submit_type").submit(event=>{
@@ -29,6 +44,7 @@ function listenTypeSubmit(){
       types.push($(this).attr("value"));
       console.log('listenTypeSubmit ran');
       console.log(types);
+
       $(".js_submit_type").hide();
       $('.js_submit_form').show();
       $('.init_app').hide();
@@ -38,6 +54,7 @@ function listenTypeSubmit(){
 });
 }
 
+//listen submint listens for the entering of the destination, passes the destination to geocoder
 function listenSubmit(){
     console.log('listenSubmit ran');
   $('.js_submit_form').submit(event=> {
@@ -53,14 +70,8 @@ function listenSubmit(){
   })
 }
 
-  function renderTypes(){
-    for(var i=0;i<place_types.length;i++){
-     $(".js_types").append(`<input type="checkbox" name="checkbox_input${place_types[i]}" value="${place_types[i]}" class="js_submit_type">
-    <label for="google_place_types" class="js_type">${place_types[i].replace('_',' ')}</label><br>`)
-    console.log('render types ran');
-   }
- }
 
+//geoCoder finds the geocode of the  destination and passes the latlng to the newMap function
 function getGeoCode(query){
   var geocoder= new google.maps.Geocoder();
   geocoder.geocode({address:query}, function(results,status){
@@ -70,35 +81,68 @@ function getGeoCode(query){
 }})
 }
 
+//createresults populates the requested results(results@i) into the your results div
 function createResults(results){
   console.log('createResults ran');
-  const jsonresults = results;
-  const returned_types= results.types;
-  console.log(diff);
-  let photo_ref=jsonresults.photos["0"].getUrl({'maxWidth': 100})
-
-  $('.js_display_div').append(`<div class="col-3 js_your_results">
-    <h1 class="type_place">${jsonresults.types[0]}</h1>
+  let jsonresults = results;
+  let returned_types= results.types;
+  let photo_ref=jsonresults.photos[0].getUrl({'maxWidth': 100});
+  $('.js_display_div').append(`<div class="col-3 js_your_results" href="${jsonresults.icon}">
+    <h1 class="type_place"></h1>
     <h2 class="js_name">${jsonresults.name}</h2>
-    <h3 class="js_vicinity">${jsonresults.vicinity}</h3>
     <a class="js_more_info" href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=${jsonresults.place_id}">More Information</a>
-    <div class="pic_div">
-      <img class="google_img" src="${photo_ref}"width = "100px" height = "75px">
-    </div>
+      <img class="google_img" src="${photo_ref}">
+
     </div>
     `);
   }
 
+//find diff consolidates all the matched types on used results on the callBack, into one array. Then compares 
+//them to the original types selects and removes the types in the consolidated array from the original array, 
+//thus returning what hasnt been found
 
-function renderResult(jsonresult){
-  console.log('renderResult ran')
-  //render the results in the DOM
+function findDiff(results){
+  console.log('findDiff ran');
+  main_array.push(results.types);
+  let main_array_merged =[].concat.apply([], main_array);
+  let mapObj={};
+  console.log(main_array_merged);
+
+  for (let i=0;i<types.length;i++)
+    {mapObj[types[i]]='true'}
+
+  main_array_merged.forEach(function(itm){
+    delete mapObj[itm];
+      })
+    console.log(mapObj);
+    console.log('final mapObj:',mapObj);
+    let report_contents=Object.keys(mapObj);
+    console.log(Object.keys(mapObj));
+    reportResults(report_contents);
+}
+
+  function reportResults(report_contents){
+    if(!user_clicked){
+      return
+  }
+  $('.report_div').show();
+  console.log(report_contents);
+  if(report_contents==""){
+  $('.report_div').html(`<h3>All your amenities have been located- See below</h3><button type="button" class="init_app">New Search</button>`);
+  }
+  else{
+  $('.report_div').html(`<h3>The following amenities have not been located: ${report_contents}</h3><button type="button" class="init_app">New Search</button>`);
+  }
+  $(".js_types").empty();
+  startApp();
+
 }
 
   function handleMap(){
-    // renderTypes();
     listenTypeSubmit();
   }
   //https://maps.googleapis.com/maps/api/place/details/json?placeid=${jsonresults.place_id}&key=AIzaSyBZ7m7GCdTNU6w7AT_IfdAtJh8xu41dCUw.results.website
   // "https://www.google.com/maps/search/?api=1&query=Google&query_place_id=${jsonresults.getUrl}"
+      // <h3 class="js_vicinity">${jsonresults.vicinity}</h3>
+      // .replace(/_/g,' ')
 $(handleMap);

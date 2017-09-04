@@ -9,7 +9,7 @@
        * element that contains the map. */
       #map {
         height: 100%;
-        width: 57%;
+        width: 50%;
         float: right;
         position: fixed !important;
         right:0;
@@ -84,7 +84,7 @@
       request = {
           location: pyrmont,
           radius: 4000,
-          type: ["dentist"]
+          type: [""]
       };
         infowindow = new google.maps.InfoWindow();
         service = new google.maps.places.PlacesService(map);
@@ -93,13 +93,15 @@
         $('.js_submit_type').hide();
         $('.js_display_div').hide();
         $('.question').hide();
+        $('.report_div').hide();
+
         startApp();
 
     service.nearbySearch(request, callback);
   }
 
         function newMap(latlng){
-          //this function reloads he map with new latlng from geocoder
+          //this function reloads the map with new latlng from geocoder and send a callback request to the api using the place types chosen
           clearMarkers();
           map.setCenter(latlng);
           for(i=0;i<types.length;i++){
@@ -114,17 +116,26 @@
     };
 }
 
+
+//callBack runs and if it receives an OK status it runs createMarker,createResults and findDiff.. If no results come back it returns a nothing found message
       function callback(results, status) {
+        console.log(status);
         if (status === google.maps.places.PlacesServiceStatus.OK) {
-          for (var i = 0; i < results.length; i++);
-            createResults(results[0]); {
+            console.log('callback running');
+            createResults(results[0]); 
             createMarker(results[0]);
+            findDiff(results[0]);
             console.log(results);
-            console.log
+          }else if (status===google.maps.places.PlacesServiceStatus.ZERO_RESULTS){
+            console.log($('.report_div'));
+            $('.js_types').empty();
+            $('.report_div').html(`<h3>None of your amenities have been located</h3><button type="button" class="init_app">New Search</button>`).show();
+             startApp();
+             console.log('startApp ran'); 
           }
+          
         }
 
-      }
 
 
       function createMarker(place) {
@@ -156,7 +167,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <!--     <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet"> -->
 <!--     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan" rel="stylesheet">
+  <!--   <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Chelsea+Market" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="grid.css">
     <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
@@ -164,28 +176,35 @@
   </head>
   <body class="global">
   <header class="col-6">
-  <h1 class="local_ess">Holiday Essentials</h1>
-  <h2 class="sub_head">Your Essentials - Close by. . . .</h2>
+  <h1 class="local_ess">Holidays Essentials</h1>
+<!--   <h2 class="sub_head">Know before you book</h2> -->
   <h2 class="question"> Select your essentials....</h2>
+  <h3 class="gamble">Don't gamble on your hotel location</br>Know before you book!</h3>
+  <h3 class="amenities"> Find the amenities and services you need, close to your hotel</h3>
+  <div class="report_div col-12"></div>
+  <div class="js_display_div col-12"></div>
+<!--   Ask jack to explain again -->
+
+  <button type="button" class="init_app">Let's Go!!</button>
   </header>
-   <button type="button" class="init_app ">Find Essentials!</button>
-    <div id="map"></div>
+
+    <div id="map" class="col-6"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ7m7GCdTNU6w7AT_IfdAtJh8xu41dCUw&libraries=places&callback=initMap" async defer></script>
-    <form action="#" class="js_submit_form col-3">
+    <form action="#" class="js_submit_form col-6">
     <h2 class="address">Where do you want to go?</h2>
     <label for="query"></label>
     <input type="text" class="address_query_input" placeholder="New York, London, Milan">
     <button type="submit" class="search_box">Search</button>
   
     </form>
+
     <form action="#" class="js_submit_type main_input col-6">
-<!--     <h2 class="essentials">What are your <span>essentials</span></h2> -->
     <label for="query"></label>
-    <div class="js_types col-6"></div>
+    <div class="js_types"></div>
     <input type="submit" class="type_query_input">
     <label for="query"></label>
     </form>
-    <div class="js_display_div col-6"></div>
+ 
 
 <!--     <button type="submit" value="Submit"></button> -->
     
