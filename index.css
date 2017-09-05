@@ -3,7 +3,8 @@ body{
 /*	font-family: 'Roboto Mono', monospace;*/
 /*	font-family: 'Shrikhand', cursive;*/
 /*	background-color: #9cbbed;*/
-	font-family: 'Chelsea Market', cursive;
+/*	font-family: 'Chelsea Market', cursive;*/
+	font-family: 'Quicksand', sans-serif;
 	background-image: url("sea4.jpg");
 	color:#870c0c;
 /*	opacity: 0.5;*/
@@ -13,12 +14,28 @@ header{
 	position:absolute;
 	margin-top:3px;
 	color: #870c0c;
-	font-weight: 800;
 	text-align:center;
+	font-weight: bolder;
+
 /*	background-color: #02c2ed;*/
 }
-.local_ess, .sub_head, .question{
+
+h1{
+	font-size:40px;
+}
+
+h2{
+	font-size:32px;
+}
+
+h3{
+	font-size:22px;
+}
+
+.local_ess, .gamble, .question, .amenities{
 	margin:0 0 0 30px;
+	font-weight: bolder;
+/*	font-size: 20px*/
 }
 
 .underline{
@@ -53,7 +70,7 @@ header{
 	font-weight: bold;
 	top:30%;
 	margin:0 auto;
-/*	left:10%;*/
+	margin-top:3%;
 }
 
 .init_app:hover{
@@ -63,8 +80,15 @@ header{
 
 .js_types{
 	font-size: 17px;
-	color: #870c0c;
+	color: black;
 	font-weight: 800;
+	position:relative;
+	top:5%;
+}
+
+.js_type:hover{
+	background-color: rgba(239, 255, 253, 0.5);
+	font-weight:bolder;
 }
 
 .js_submit_form{
@@ -79,7 +103,6 @@ header{
 
 .address{
 	color:#870c0c;
-	font-weight: 800;
 }
 .type_query_input{
 	background-color: #e5a9bd;
