@@ -1,3 +1,4 @@
+
 body{
 /*	font-family: 'Baloo Bhaijaan', cursive;*/
 /*	font-family: 'Roboto Mono', monospace;*/
@@ -16,6 +17,8 @@ header{
 	color: #870c0c;
 	text-align:center;
 	font-weight: bolder;
+	max-width: 50%;
+/*	margin-bottom:25%;*/
 
 /*	background-color: #02c2ed;*/
 }
@@ -30,18 +33,9 @@ h2{
 
 h3{
 	font-size:22px;
+	margin-top: 5%;
 }
 
-.local_ess, .gamble, .question, .amenities{
-	margin:0 0 0 30px;
-	font-weight: bolder;
-/*	font-size: 20px*/
-}
-
-.underline{
-	text-decoration: underline;
-	text-decoration-color: green;
-}
 
 .question{
 	display:inline-block;
@@ -50,6 +44,7 @@ h3{
 .js_submit_type{
 	position: relative;
 	top:13%;
+	max-width: 50%
 }
 
 .js_display_div{
@@ -79,11 +74,10 @@ h3{
 }
 
 .js_types{
-	font-size: 17px;
+	font-size: 19px;
 	color: black;
 	font-weight: 800;
-	position:relative;
-	top:5%;
+	margin-top:10%;
 }
 
 .js_type:hover{
@@ -94,15 +88,17 @@ h3{
 .js_submit_form{
 	position:relative;
 	text-align:center;
-	top:10%;
+	top:30%;
 	margin:0 0 0 0;
 	font-size: 23px;
 	color: #e5a9bd;
 	font-weight: 800;
+	max-width: 50%;
 }
 
 .address{
 	color:#870c0c;
+	margin-top:5%;
 }
 .type_query_input{
 	background-color: #e5a9bd;
@@ -118,6 +114,7 @@ h3{
 .type_query_input:hover{
 	background-color: #ff60f4;
 	font-weight:bolder;
+	max-width: 50%
 
 }
 
@@ -126,6 +123,7 @@ h3{
 	font-size: 15px;
 	border-radius: 10px;
 	font-weight:bold;
+	margin-top: 5%;
 }
 
 .search_box:hover{
@@ -186,4 +184,39 @@ h3{
 	position: relative;
 	top:10%;
 	clear:right;
+}
+
+@media only screen and (max-width: 640px) {
+
+header{
+	text-align: center;
+	margin-bottom:10%;
+/*	right:5%;*/
+}
+
+  h1 {
+    font-size:22px;
+  }
+
+  h2{
+    font-size:19px;
+  }
+
+  h3{
+    font-size: 17px;
+  }
+
+.init_app{
+  font-size: 9px;
+}
+
+.js_types{
+  font-size:16px;
+  margin-top:25%;
+}
+
+.js_submit_form{
+  font-size: 18px;
+}
+
 }

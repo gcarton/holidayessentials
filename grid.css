@@ -21,6 +21,7 @@
   margin: 0 auto;
 }
 
+
 /* Clearfix */
 .row::before,
 .row::after {
@@ -58,18 +59,28 @@
     width: 25%;
   }
 
-  /* 4 columns, 4/12 in % */
+  /* 4 columns */
   .col-4 {
-    width: 33.333333%;
   }
 
-  /* 6 columns, 6/12 in % */
+  /* 6 columns */
   .col-6 {
-    width: 50%;
+
   }
 
-  /* 12 columns, 12/12 in % */
+  /* 12 columns */
   .col-12 {
-    width: 100%;
   }
+
+  h1{
+  font-size:40px;
+}
+
+h2{
+  font-size:32px;
+}
+
+h3{
+  font-size:22px;
+
 }
