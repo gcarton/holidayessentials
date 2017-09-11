@@ -131,7 +131,10 @@ function clearMarkers() {
     <link rel="stylesheet" href="grid.css">
 
 <!--     <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet"> -->
+<!--     <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet"> -->
+<!--     <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Ramabhadra" rel="stylesheet">
     <script src="index.js"></script>
   </head>
 
@@ -147,21 +150,23 @@ function clearMarkers() {
 <!--   Ask jack to explain again -->
       <button type="button" class="init_app">Let's Go!!</button>
     </header>
-
-      <div id="map" class="col-6"></div>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ7m7GCdTNU6w7AT_IfdAtJh8xu41dCUw&libraries=places&callback=initMap" async defer></script>
-    <form action="#" class="js_submit_form col-6">
-
-      <label for="query"></label>
-      <input type="text" class="address_query_input col-6" placeholder="New York, London, Milan">
-      <button type="submit" class="search_box">Search</button>
-    </form>
-
     <form action="#" class="js_submit_type main_input col-6">
       <label for="query"></label>
-      <div class="js_types"></div>
+      <div class="js_types col-12"></div>
       <input type="submit" class="type_query_input">
       <label for="query"></label>
     </form>
+
+    <form action="#"  name="address_form" class="js_submit_form col-6">
+      <label for="query"></label>
+      <input type="text" id="form_address" class="address_query_input col-6" placeholder="New York, London, Milan">
+      <button type="submit" class="search_box">Search</button>
+    </form>
+
+      <div id="map" class="col-6"></div>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ7m7GCdTNU6w7AT_IfdAtJh8xu41dCUw&libraries=places&callback=initMap" async defer></script>
+  
+
+
   </body>
 </html>

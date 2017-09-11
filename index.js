@@ -33,7 +33,7 @@ function startApp() {
 //render types populates all the predetermined place types with a checkbox
 function renderTypes() {
   for (var i = 0; i < place_types.length; i++) {
-    $(".js_types").append("<input type=\"checkbox\" name=\"checkbox_input" + place_types[i] + "\" value=\"" + place_types[i] + "\" class=\"js_submit_type\">\n      <label for=\"google_place_types\" class=\"js_type\">" + place_types[i].replace('_', ' ') + "</label><br>");
+    $(".js_types").append("<input type=\"checkbox\" id=\"checkbox\" name=\"checkbox_input" + place_types[i] + "\" value=\"" + place_types[i] + "\" class=\"js_submit_type\">\n      <label for=\"google_place_types\" class=\"js_type\">" + place_types[i].replace('_', ' ') + "</label><br>");
     console.log('render types ran');
   }
 }
@@ -43,6 +43,7 @@ function listenTypeSubmit() {
   console.log('listenTypeSubmit ran');
   $(".js_submit_type").submit(function (event) {
     event.preventDefault();
+    listenSubmit();
     $('.js_types input[type="checkbox"]:checked').each(function () {
       types.push($(this).attr("value"));
       console.log('listenTypeSubmit ran');
@@ -52,30 +53,31 @@ function listenTypeSubmit() {
       $('.init_app').hide();
       $('.question').hide();
       $('.address').show();
-      listenSubmit();
     });
   });
 }
 
 //listen submint listens for the entering of the destination, passes the destination to geocoder
 function listenSubmit() {
-  console.log('listenSubmit ran');
   $('.js_submit_form').submit(function (event) {
     event.preventDefault();
-    var queryTarget = $(event.currentTarget).find('.address_query_input');
-    var query = queryTarget.val();
-    $('.js_display_div').show();
-    $('.js_submit_form').hide();
-    $('.address').hide();
-    queryTarget.val("");
+    CheckForBlank();
     console.log('listenSubmit ran');
-    getGeoCode(query);
-    console.log(query);
+    // var queryTarget = $(event.currentTarget).find('.address_query_input');
+    // var query = queryTarget.val();
+    // $('.js_display_div').show();
+    // $('.js_submit_form').hide();
+    // $('.address').hide();
+    // queryTarget.val("");
+    // console.log('listenSubmit ran');
+    // getGeoCode(query);
+    // console.log(query);
   });
 }
 
 //geoCoder finds the geocode of the  destination and passes the latlng to the newMap function
 function getGeoCode(query) {
+  console.log('get geocoder ran');
   var geocoder = new google.maps.Geocoder();
   geocoder.geocode({ address: query }, function (results, status) {
     if (results.length) {
@@ -91,7 +93,7 @@ function createResults(results) {
   var jsonresults = results;
   var returned_types = results.types;
   var photo_ref = jsonresults.photos[0].getUrl({ 'maxWidth': 100 });
-  $('.js_display_div').append("<div class=\"col-3 js_your_results\" href=\"" + jsonresults.icon + "\">\n    <h1 class=\"type_place\"></h1>\n    <h2 class=\"js_name\">" + jsonresults.name + "</h2>\n    <a class=\"js_more_info\" href=\"https://www.google.com/maps/search/?api=1&query=Google&query_place_id=" + jsonresults.place_id + "\">More Information</a>\n      <img class=\"google_img\" src=\"" + photo_ref + "\">\n\n    </div>\n    ");
+  $('.js_display_div').append("<div class=\"col-3 js_your_results\" href=\"" + jsonresults.icon + "\">\n    <h1 class=\"type_place\"></h1>\n    <h2 class=\"js_name\">" + jsonresults.name + "</h2>\n    <a class=\"js_more_info\" href=\"https://www.google.com/maps/search/?api=1&query=Google&query_place_id=" + jsonresults.place_id + "\" target=\"_blank\">More Information</a>\n      <img class=\"google_img\" src=\"" + photo_ref + "\">\n\n    </div>\n    ");
 }
 
 //find diff consolidates all the matched types on used results on the callBack, into one array. Then compares 
@@ -130,14 +132,35 @@ function reportResults(report_contents) {
   if (report_contents == "") {
     $('.report_div').html("<h3>All your amenities have been located- See below</h3><button type=\"button\" class=\"init_app\">New Search</button>");
   } else {
-    $('.report_div').html("<h3>The following amenities have not been located: " + report_contents + "</h3><button type=\"button\" class=\"init_app\">New Search</button>");
+    var report_contents_string=report_contents.map((i) => {return i.replace(/_/g," ")})
+    $('.report_div').html("<h3>The following amenities have not been located: " + report_contents_string + "</h3><button type=\"button\" class=\"init_app\">New Search</button>");
   }
   $(".js_types").empty();
   startApp();
 }
+
+function CheckForBlank() {
+  if(document.getElementById('form_address').value === ""){
+     alert("Please enter your destination");
+    return false;
+  }else{
+    var queryTarget = $(event.currentTarget).find('.address_query_input');
+    var query = queryTarget.val();
+    $('.js_submit_form').off();
+    $('.js_display_div').show();
+    $('.js_submit_form').hide();
+    $('.address').hide();
+    queryTarget.val("");
+    console.log('listenSubmit ran');
+    getGeoCode(query);
+    console.log(query);
+  }
+  }
+
 
 function handleMap() {
   listenTypeSubmit();
 }
 
 $(handleMap);
+

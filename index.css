@@ -5,18 +5,24 @@ body{
 /*	font-family: 'Shrikhand', cursive;*/
 /*	background-color: #9cbbed;*/
 /*	font-family: 'Chelsea Market', cursive;*/
-	font-family: 'Quicksand', sans-serif;
+/*	font-family: 'Quicksand', sans-serif;*/
+/*	font-family: 'Fredoka One', cursive;*/
+/*	font-family: 'Bangers', cursive;*/
+	font-family: 'Ramabhadra', sans-serif;
+
 	background-image: url("sea4.jpg");
-	color:#870c0c;
+	color:#5F08A5;
+/*	text-shadow: -1px 0 #4D7C56, 0 1px #4D7C56, 1px 0 #4D7C56, 0 -1px #4D7C56;*/
 /*	opacity: 0.5;*/
 }
 
 header{
 	position:absolute;
-	margin-top:3px;
-	color: #870c0c;
+/*	margin-top:3px;*/
+	color: #91240D;
+	text-shadow: -1px 0 #4D7C56, 0 1px #4D7C56, 1px 0 #4D7C56, 0 -1px #4D7C56;
 	text-align:center;
-	font-weight: bolder;
+/*	font-weight: bolder;*/
 	max-width: 50%;
 /*	margin-bottom:25%;*/
 
@@ -52,11 +58,13 @@ h3{
 	position:relative;
 	top:20%;
 	display:block;
+	text-shadow:none;
 }
 
 .init_app{
-	background-color: #e5a9bd;
+	background-color: #6248C1;
 	font-size: 15px;
+	border:none;
 	border-radius: 10px;
 	position:relative;
 	display:block;
@@ -69,14 +77,23 @@ h3{
 }
 
 .init_app:hover{
-	background-color: #ff60f4;
+	background-color: #AE86D8;
 
+}
+
+#checkbox{
+	height: 15px;
+	background: #555;
+	background-color: red;
+	margin: 2px;
+	position: relative;
+	border-radius: 3px;
 }
 
 .js_types{
 	font-size: 19px;
 	color: black;
-	font-weight: 800;
+/*	font-weight: 800;*/
 	margin-top:10%;
 }
 
@@ -101,7 +118,8 @@ h3{
 	margin-top:5%;
 }
 .type_query_input{
-	background-color: #e5a9bd;
+	background-color: #6248C1;
+	border:none;
 	font-size: 15px;
 	border-radius: 10px;
 	position:relative;
@@ -112,22 +130,23 @@ h3{
 }
 
 .type_query_input:hover{
-	background-color: #ff60f4;
+	background-color: #AE86D8;
 	font-weight:bolder;
 	max-width: 50%
 
 }
 
 .search_box{
-	background-color: #e5a9bd;
+	background-color: #6248C1;
 	font-size: 15px;
+	border:none;
 	border-radius: 10px;
 	font-weight:bold;
 	margin-top: 5%;
 }
 
 .search_box:hover{
-	background-color: #ff60f4;
+	background-color: #AE86D8;
 }
 
 .type_place{
@@ -160,6 +179,7 @@ h3{
 .js_name{
 	font-size: 17px;
 	text-align: center;
+	margin-bottom:15%;
 }
 
 .js_vicinity{
@@ -190,7 +210,10 @@ h3{
 
 header{
 	text-align: center;
-	margin-bottom:10%;
+/*	margin-bottom:10%;*/
+	clear: both;
+	position:static;
+	max-width:100%;
 /*	right:5%;*/
 }
 
@@ -217,6 +240,21 @@ header{
 
 .js_submit_form{
   font-size: 18px;
+}
+
+.col-6, #map{
+width: 100%;
+float: none;
+position:static !important;
+}
+
+#map{
+	position:relative !important;
+}
+
+.js_types{
+	margin:15%;
+	margin-top:0%;
 }
 
 }
