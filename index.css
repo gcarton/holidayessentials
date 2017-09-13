@@ -292,7 +292,7 @@ header{
 
 .address_query_input{
 	max-width:50%;
-	margin-left:25%;
+	margin-left:20%;
 }
 
 .col-6, #map{
@@ -313,11 +313,25 @@ position:static !important;
 
 .search-box{
 	display:block;
+
 }
 
 .js_name{
 	margin-bottom:10%;
 	font-size:25px;
+}
+
+.google_img{
+     left: 0; 
+ 	 right: 0; 
+  	margin-left: auto; 
+  	margin-right: auto;
+    display:block;
+    position:relative;
+    bottom:-5%;
+    width:75%;
+    height:35%;
+    margin-top:5%;
 }
 
 }
