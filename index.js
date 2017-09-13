@@ -33,7 +33,7 @@ function startApp() {
 //render types populates all the predetermined place types with a checkbox
 function renderTypes() {
   for (var i = 0; i < place_types.length; i++) {
-    $(".js_types").append("<input type=\"checkbox\" id=\"checkbox\" name=\"checkbox_input" + place_types[i] + "\" value=\"" + place_types[i] + "\" class=\"js_submit_type\">\n      <label for=\"google_place_types\" class=\"js_type\">" + place_types[i].replace('_', ' ') + "</label><br>");
+    $(".js_types").append("<input type=\"checkbox\" id=\"checkbox" + place_types[i] + "\" name=\"checkbox_input" + place_types[i] + "\" value=\"" + place_types[i] + "\" class=\"js_submit_type\"/>\n      <label for=\"checkbox" + place_types[i] + "\" class=\"js_type\">" + place_types[i].replace('_', ' ') + "</label><br>");
     console.log('render types ran');
   }
 }
@@ -93,7 +93,7 @@ function createResults(results) {
   var jsonresults = results;
   var returned_types = results.types;
   var photo_ref = jsonresults.photos[0].getUrl({ 'maxWidth': 100 });
-  $('.js_display_div').append("<div class=\"col-3 js_your_results\" href=\"" + jsonresults.icon + "\">\n    <h1 class=\"type_place\"></h1>\n    <h2 class=\"js_name\">" + jsonresults.name + "</h2>\n    <a class=\"js_more_info\" href=\"https://www.google.com/maps/search/?api=1&query=Google&query_place_id=" + jsonresults.place_id + "\" target=\"_blank\">More Information</a>\n      <img class=\"google_img\" src=\"" + photo_ref + "\">\n\n    </div>\n    ");
+  $('.js_display_div').append("<div class=\"col-6 js_your_results\" href=\"" + jsonresults.icon + "\">\n    <h1 class=\"type_place\"></h1>\n    <h2 class=\"js_name\">" + jsonresults.name + "</h2>\n    <a class=\"js_more_info\" href=\"https://www.google.com/maps/search/?api=1&query=Google&query_place_id=" + jsonresults.place_id + "\" target=\"_blank\">More Information</a>\n      <img class=\"google_img\" src=\"" + photo_ref + "\">\n\n    </div>\n    ");
 }
 
 //find diff consolidates all the matched types on used results on the callBack, into one array. Then compares 

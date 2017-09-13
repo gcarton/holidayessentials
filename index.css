@@ -1,16 +1,13 @@
+html{
+	height:100%;
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-image: url("sea4.jpg");
+	background-attachment: fixed;
+}
 
 body{
-/*	font-family: 'Baloo Bhaijaan', cursive;*/
-/*	font-family: 'Roboto Mono', monospace;*/
-/*	font-family: 'Shrikhand', cursive;*/
-/*	background-color: #9cbbed;*/
-/*	font-family: 'Chelsea Market', cursive;*/
-/*	font-family: 'Quicksand', sans-serif;*/
-/*	font-family: 'Fredoka One', cursive;*/
-/*	font-family: 'Bangers', cursive;*/
 	font-family: 'Ramabhadra', sans-serif;
-
-	background-image: url("sea4.jpg");
 	color:#5F08A5;
 /*	text-shadow: -1px 0 #4D7C56, 0 1px #4D7C56, 1px 0 #4D7C56, 0 -1px #4D7C56;*/
 /*	opacity: 0.5;*/
@@ -19,7 +16,7 @@ body{
 header{
 	position:absolute;
 /*	margin-top:3px;*/
-	color: #91240D;
+	color: rgb(34, 4, 106);
 	text-shadow: -1px 0 #4D7C56, 0 1px #4D7C56, 1px 0 #4D7C56, 0 -1px #4D7C56;
 	text-align:center;
 /*	font-weight: bolder;*/
@@ -80,16 +77,6 @@ h3{
 
 .init_app:hover{
 	background-color: #AE86D8;
-
-}
-
-#checkbox{
-	height: 15px;
-	background: #555;
-	background-color: red;
-	margin: 2px;
-	position: relative;
-	border-radius: 3px;
 }
 
 .js_types{
@@ -97,6 +84,31 @@ h3{
 	color: black;
 /*	font-weight: 800;*/
 	margin-top:10%;
+	margin-left:7%;
+}
+
+input[type=checkbox]{
+    display: none;
+}
+
+
+ input[type=checkbox] + label{
+    width: 200px;
+    height: 32px;
+    padding-left: 40px;
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+input[type=checkbox]:checked + label{
+  background-image:url(http://findicons.com/files/icons/2566/horizon/16/checkbox.png);
+}
+
+label{
+ background-image:url(http://findicons.com/files/icons/2139/uidesign/16/checkbox_no.png);
+ 
 }
 
 .js_type{
@@ -106,13 +118,12 @@ h3{
 .js_type:hover{
 	background-color: rgba(239, 255, 253, 0.5);
 	font-weight:bolder;
+	margin:0 0 0 0;
 }
 
 .js_submit_form{
 	position:relative;
-	text-align:center;
 	top:30%;
-	margin:0 0 0 0;
 	font-size: 23px;
 	color: #e5a9bd;
 	font-weight: 800;
@@ -121,7 +132,6 @@ h3{
 }
 
 .address{
-	color:#870c0c;
 	margin-top:5%;
 }
 .type_query_input{
@@ -135,6 +145,7 @@ h3{
 	height:40px;
 	font-weight:bold;
 	margin-bottom: 5%;
+	max-width: 50%
 }
 
 .type_query_input:hover{
@@ -146,11 +157,14 @@ h3{
 
 .search_box{
 	background-color: #6248C1;
-	font-size: 15px;
+	font-size: 20px;
 	border:none;
 	border-radius: 10px;
 	font-weight:bold;
-	margin-top: 5%;
+	margin-left: 5%;
+	margin-top:.5%;
+/*	margin:0 auto;*/
+	
 }
 
 .search_box:hover{
@@ -161,9 +175,24 @@ h3{
 	font-size: 16px;
 	text-decoration: underline;
 }
+
+/*#checkbox label{
+	display: block;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	transition: all .5s ease;
+	cursor: pointer;
+	position: absolute;
+	top: -3px;
+	left: -3px;
+	background: #ccc;
+
+}*/
+
 .js_your_results{
 	background-color: rgba(138, 221, 247, 0.25);
-	width:13%;
+/*	width:13%;*/
 	margin-top:1%;
 	margin-bottom:1%;
 	margin-left:1%;
@@ -181,10 +210,16 @@ h3{
 
 }
 
+.address_query_input{
+	max-width:50%;
+	margin-left:15%;
+}
+
 .js_more_info{
-	color:#870c0c;
+/*	color:#870c0c;*/
 }
 .js_name{
+	color:#1c2b9e;
 	font-size: 17px;
 	text-align: center;
 	margin-bottom:15%;
@@ -203,8 +238,9 @@ h3{
     display:block;
     position:absolute;
     bottom:5%;
-    width:110px;
-    height:75px;
+    width:75%;
+    height:35%;
+    margin-top:5%;
 }
 
 .report_div{
@@ -272,11 +308,16 @@ position:static !important;
 
 .js_types{
 	margin:15%;
-	margin-top:0%;
+	margin-top:10%;
 }
 
 .search-box{
 	display:block;
+}
+
+.js_name{
+	margin-bottom:10%;
+	font-size:25px;
 }
 
 }

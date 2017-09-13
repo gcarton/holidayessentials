@@ -65,7 +65,11 @@
 
   /* 6 columns */
   .col-6 {
+    width:50%;
+  }
 
+  .col-6.js_your_results{
+    width:48%;
   }
 
   /* 12 columns */
