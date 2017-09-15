@@ -92,6 +92,7 @@ function callback(results, status) {
     findDiff(results[0]);
     console.log(results);
   } else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
+    console.log(google.maps.places.PlacesServiceStatus.ZERO_RESULTS);
     console.log($('.report_div'));
     $('.js_types').empty();
     $('.report_div').html('<h3>None of your amenities have been located</h3><button type="button" class="init_app">New Search</button>').show();

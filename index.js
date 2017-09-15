@@ -92,10 +92,18 @@ function createResults(results) {
   console.log('createResults ran');
   var jsonresults = results;
   var returned_types = results.types;
-  var photo_ref = jsonresults.photos[0].getUrl({ 'maxWidth': 100 });
-  $('.js_display_div').append("<div class=\"col-6 js_your_results\" href=\"" + jsonresults.icon + "\">\n    <h1 class=\"type_place\"></h1>\n    <h2 class=\"js_name\">" + jsonresults.name + "</h2>\n    <a class=\"js_more_info\" href=\"https://www.google.com/maps/search/?api=1&query=Google&query_place_id=" + jsonresults.place_id + "\" target=\"_blank\">More Information</a>\n      <img class=\"google_img\" src=\"" + photo_ref + "\">\n\n    </div>\n    ");
+  var jsonphotos= jsonresults.photos;
+  console.log(jsonphotos);
+  if(jsonphotos===undefined){
+  var photo_ref="https://dummyimage.com/200x100/9b9dc7/5960c2&text=No+Image+Found";
+  console.log(photo_ref);
+  $('.js_display_div').append("<div class=\"col-6 js_your_results\" href=\"" + jsonresults.icon + "\">\n    <h1 class=\"type_place\"></h1>\n    <h2 class=\"js_name\">" + jsonresults.name + "</h2>\n    <a class=\"js_more_info\" href=\"https://www.google.com/maps/search/?api=1&query=Google&query_place_id=" + jsonresults.place_id + "\" target=\"_blank\">More Information</a>\n      <div class=\"google_img\" style=\"background-image:url(" + photo_ref + ")\"></div>\n\n    </div>\n    ");
+  }else{  
+  var photo_ref = jsonresults.photos[0].getUrl({ 'maxWidth': 200 });
+  console.log(photo_ref);
+  $('.js_display_div').append("<div class=\"col-6 js_your_results\" href=\"" + jsonresults.icon + "\">\n    <h1 class=\"type_place\"></h1>\n    <h2 class=\"js_name\">" + jsonresults.name + "</h2>\n    <a class=\"js_more_info\" href=\"https://www.google.com/maps/search/?api=1&query=Google&query_place_id=" + jsonresults.place_id + "\" target=\"_blank\">More Information</a>\n      <div class=\"google_img\" style=\"background-image:url(" + photo_ref + ")\"></div>\n\n    </div>\n    ");
 }
-
+}
 //find diff consolidates all the matched types on used results on the callBack, into one array. Then compares 
 //them to the original types selects and removes the types in the consolidated array from the original array, 
 //thus returning what hasnt been found

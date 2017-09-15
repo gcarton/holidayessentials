@@ -28,6 +28,7 @@ header{
 
 h1{
 	font-size:40px;
+	line-height: 50px;
 }
 
 h2{
@@ -36,7 +37,8 @@ h2{
 
 h3{
 	font-size:22px;
-	margin-top: 5%;
+	line-height:26px;
+/*	margin-top: 5%;*/
 }
 
 
@@ -60,7 +62,8 @@ h3{
 }
 
 .init_app{
-	background-color: #6248C1;
+	background-color: #26076A;
+	color:white;
 	font-size: 15px;
 	border:none;
 	border-radius: 10px;
@@ -76,7 +79,7 @@ h3{
 }
 
 .init_app:hover{
-	background-color: #AE86D8;
+	background-color: #4b7993;
 }
 
 .js_types{
@@ -116,7 +119,7 @@ label{
 	margin-bottom: 0;
 }
 .js_type:hover{
-	background-color: rgba(239, 255, 253, 0.5);
+/*	background-color: rgba(239, 255, 253, 0.5);*/
 	font-weight:bolder;
 	margin:0 0 0 0;
 }
@@ -135,7 +138,8 @@ label{
 	margin-top:5%;
 }
 .type_query_input{
-	background-color: #6248C1;
+	background-color: #22046A;
+	color:white;
 	border:none;
 	font-size: 15px;
 	border-radius: 10px;
@@ -149,14 +153,15 @@ label{
 }
 
 .type_query_input:hover{
-	background-color: #AE86D8;
+	background-color: #4b7993;
 	font-weight:bolder;
 	max-width: 50%
 
 }
 
 .search_box{
-	background-color: #6248C1;
+	background-color: #22046A;
+	color:white;
 	font-size: 20px;
 	border:none;
 	border-radius: 10px;
@@ -168,7 +173,7 @@ label{
 }
 
 .search_box:hover{
-	background-color: #AE86D8;
+	background-color: #4b7993;
 }
 
 .type_place{
@@ -191,7 +196,7 @@ label{
 }*/
 
 .js_your_results{
-	background-color: rgba(138, 221, 247, 0.25);
+	background-color: rgba(141, 187, 213, 0.5);
 /*	width:13%;*/
 	margin-top:1%;
 	margin-bottom:1%;
@@ -199,13 +204,14 @@ label{
 	margin-right:1%;
 	height:220px;
 	position: relative;
-	border-color:#ba44ac;
-	border-style: solid;
-	border-width: 2px;
+	border-color:#308198;
+	border-radius: 4px;
+	border-style: double;
+	border-width: 4px;
 }
 
 .js_your_results:hover{
-	background-color: rgba(240, 242, 135, 0.5);
+	background-color: rgba(138, 221, 247, 0.25);
 	font-weight: bolder;
 
 }
@@ -216,13 +222,14 @@ label{
 }
 
 .js_more_info{
-/*	color:#870c0c;*/
+	color:#5F08A5;
+	text-decoration: none;
 }
 .js_name{
 	color:#1c2b9e;
-	font-size: 17px;
+	font-size: 20px;
 	text-align: center;
-	margin-bottom:15%;
+	margin-bottom:8%;
 }
 
 .js_vicinity{
@@ -231,8 +238,8 @@ label{
 }
 
 .google_img{
-     left: 0; 
- 	 right: 0; 
+    left: 0; 
+ 	right: 0; 
   	margin-left: auto; 
   	margin-right: auto;
     display:block;
@@ -241,6 +248,10 @@ label{
     width:75%;
     height:35%;
     margin-top:5%;
+    background-size: cover;
+    background-position:center center;
+    border:solid;
+    border-color:#6f69d5;
 }
 
 .report_div{
